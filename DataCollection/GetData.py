@@ -89,22 +89,8 @@ def main():
             volume INTEGER
         )
         ''')
-    top_us_stocks = [
-    "AAPL", "NVDA", "MSFT", "GOOGL", "AMZN", "META", "BRK-A", "LLY", "TSM", "AVGO",
-    "TSLA", "JPM", "WMT", "SONY", "UNH", "V", "XOM", "NVO", "MA", "PG", "JNJ", "COST",
-    "ORCL", "HD", "ASML", "ABBV", "BAC", "KO", "MRK", "NFLX", "AZN", "CVX", "SMFG",
-    "SAP", "CRM", "ADBE", "TM", "NVS", "PEP", "AMD", "TMUS", "TMO", "LIN", "ACN",
-    "MCD", "CSCO", "ABT", "WFC", "BABA", "INTC", "IBM", "QCOM", "NVS", "UPS", "HON",
-    "AMGN", "SBUX", "PFE", "INTU", "FDX", "MDT", "CHTR", "TGT", "LMT", "AMT", "WBA",
-    "TFC", "TXN", "BLK", "CVS", "NOW", "SBAC", "MU", "ISRG", "GM", "DHR", "TJX",
-    "ADI", "PYPL", "ZTS", "DUK", "CAT", "LOW", "PLD", "MS", "EL", "FIS", "ADP",
-    "SO", "BDX", "MDLZ", "FDX", "GS", "SCHW", "KEP", "NEE", "CL", "BKNG", "CSX",
-    "ADI", "ICE", "MCO", "EA", "GD", "TFC", "TD", "AON", "WDAY", "APD", "EQIX",
-    "KMB", "CCI", "ETN", "SYK", "SPGI", "HUM", "EMR", "INTC", "NSC", "EXC", "WM",
-    "BMY", "FISV", "LRCX", "VZ", "ROST", "EW", "PGR", "STZ", "AEP", "KLAC", "BSX",
-    "APTV", "MU", "AIG", "ORLY", "NSC", "AFL" ]
-    
-    tickers = ["AAPL", "NVDA", "MSFT", "GOOGL", "AMZN", "META", "TSLA"]
+    tickers = ["AAPL", "NVDA", "MSFT", "GOOGL", "AMZN", "META", "BRK-A", "LLY", "TSM", "AVGO",
+    "TSLA", "JPM", "WMT", "SONY", "UNH", "V", "XOM", "NVO", "MA"]
     for ticker in tickers:
         latest_timestamp = Get_latest_timestamp(ticker)
         data = fetch_intraday_data(ticker)
