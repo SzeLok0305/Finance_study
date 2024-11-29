@@ -21,6 +21,7 @@ if 'available_strikes' not in st.session_state:
     st.session_state.available_strikes = None
 
 def black_scholes(S, K, T, r, q, sigma, option_type='call'):
+    #Pleas annualize everything before input:)
     d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
     d2 = d1 - sigma * np.sqrt(T)
     
@@ -85,8 +86,8 @@ def initialize_parameters(ticker, maturity_period, look_back_period=20):
     symbol = yf.Ticker(ticker)
     expiration = symbol.options[maturity_period-1]
     current_price = symbol.info['currentPrice']
-    T_expiration = max(((pd.Timestamp(expiration) - pd.Timestamp(datetime.date.today())).days),1)/360 # account for time zone, set t must be at least 1 
-    
+    #We need to track time down to second lets goooooooooooooooooooooo(beware of time zone tho)
+    T_expiration = max(((pd.Timestamp(expiration) - pd.Timestamp(datetime.datetime.now())).total_seconds()) / (360 * 24 * 60 * 60), 1/(360 * 24 * 60 * 60))
     # Get available strikes
     option_chain = symbol.option_chain(expiration)
     available_strikes = sorted(option_chain.puts['strike'].unique())
@@ -246,9 +247,9 @@ if st.session_state.previous_price is not None:
 else:
     price_change = 0
     price_change_pct = 0
-
 # Update previous price for next iteration
 st.session_state.previous_price = st.session_state.current_price
+
 #Table
 Update_duration = 5
 placeholder = st.empty()
