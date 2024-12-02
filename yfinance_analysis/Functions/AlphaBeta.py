@@ -22,6 +22,7 @@ def AlphaBeta(strategy, market, plot=False):
     if plot:
         y_pred = np.polyval(coefficients, x)
         
+        plt.figure(figsize=(10, 6))
         plt.scatter(x, y, label='Original Data')
         plt.plot(x, y_pred, color='red', label='Linear Regression')
         text = f'Alpha: {alpha:.2f}\nBeta: {beta:.2f}'
